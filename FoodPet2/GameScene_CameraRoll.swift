@@ -64,7 +64,7 @@ extension GameScene {
                 }
     
                 detect(image: ciImage)
-                    self.addChild(newImage)
+                    //self.addChild(newImage)
               //  }
             }
            /*

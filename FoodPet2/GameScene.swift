@@ -18,6 +18,13 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
     var maskingCameraRolleChoice:Bool = false
     
     var gifTextures: [SKTexture] = []
+    var food:String = "empty.jpg"
+   
+    var character = SKSpriteNode(imageNamed: "1")
+    
+    /*
+    let character = SKSpriteNode(texture: SKTexture(image: UIImage.gifImageWithName("colorcharacter1")!))
+    */
     
     
     override func didMove(to view: SKView) {
@@ -34,9 +41,19 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         */
         addChild(background)
         createButton()
-        for i in 1...5 {
-            gifTextures.append(SKTexture(imageNamed: "colorcharacter1.gif\(i)"))
+        for i in 1...3 {
+            gifTextures.append(SKTexture(imageNamed: "\(i).jpg"))
         }
+        character.zPosition = 2
+        character.position = CGPoint(x: frame.midX, y: -500)
+        character.size = CGSize(width: 120, height: 120)
+        character.isPaused = false
+        addChild(character)
+        character.run(SKAction.repeatForever(SKAction.animate(with: gifTextures, timePerFrame: 0.125)))
+        
+        //character.zPosition = 1
+       // character.position = CGPoint(x: frame.midX, y: frame.size.height - 20)
+        //addChild(character)
         // Create shape node to use during mouse interaction
         /*
         let w = (self.size.width + self.size.height) * 0.05
@@ -75,7 +92,28 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
     }
     func throwFood(foodName: String) {
         print(foodName)
-        print("HEREherehehrehere")
+        if(foodName == "Hamburger") {
+            food = "Hamburger.jpg"
+        }else if(foodName == "Hot Dog") {
+            food = "HotDog.jpg"
+        }else if(foodName == "French Fries") {
+            food = "FrenchFries.jpg"
+        }else if(foodName == "Pizza") {
+            food = "Pizza.jpg"
+        }else if(foodName == "Rice") {
+            food = "Rice.jpg"
+        }else if(foodName == "Noodles") {
+            food = "Noodles.jpg"
+        }else{
+            //prompt input
+        }
+        let foodTemp = SKSpriteNode(imageNamed: food)
+        foodTemp.zPosition = 4
+        foodTemp.position = CGPoint(x: frame.midX, y: -500)
+        foodTemp.size = CGSize(width: 250, height: 250)
+        self.addChild(foodTemp)
+        foodTemp.run(SKAction.resize(toWidth: 0, height: 0, duration: 2))
+        
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
       /*
