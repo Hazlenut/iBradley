@@ -85,7 +85,7 @@ extension GameScene {
         
     }
     func detect(image: CIImage) {
-        guard let model = try? VNCoreMLModel(for: FoodImageClassifier1_1().model) else {
+        guard let model = try? VNCoreMLModel(for: FoodImageClassiferF().model) else {
             fatalError("coreml error")
         }
         let request = VNCoreMLRequest(model: model) { [self] (request, error) in

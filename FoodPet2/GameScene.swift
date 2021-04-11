@@ -22,6 +22,11 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
    
     var character = SKSpriteNode(imageNamed: "1")
     
+    var health = UserDefaults().integer(forKey: "HEALTH")
+    var happiness = UserDefaults().integer(forKey: "HAPPINESS")
+    var healthLabel = SKLabelNode()
+    var happinessLabel = SKLabelNode()
+    
     /*
     let character = SKSpriteNode(texture: SKTexture(image: UIImage.gifImageWithName("colorcharacter1")!))
     */
@@ -49,8 +54,20 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         character.size = CGSize(width: 120, height: 120)
         character.isPaused = false
         addChild(character)
-        character.run(SKAction.repeatForever(SKAction.animate(with: gifTextures, timePerFrame: 0.125)))
+        //character.run(SKAction.repeatForever(SKAction.animate(with: gifTextures, timePerFrame: 0.125)))
+        healthLabel.zPosition = 2
+        healthLabel.position = CGPoint(x: -100, y: 500)
+        healthLabel.fontSize = 40
+        healthLabel.fontColor = .black
+        healthLabel.text = "HEALTH " + String(UserDefaults.standard.integer(forKey: "HEALTH"))
+        addChild(healthLabel)
         
+        happinessLabel.zPosition = 2
+        happinessLabel.position = CGPoint(x: -100, y: 450)
+        happinessLabel.fontSize = 40
+        happinessLabel.fontColor = .black
+        happinessLabel.text = "HAPPINESS " + String(UserDefaults.standard.integer(forKey: "HAPPINESS"))
+        addChild(happinessLabel)
         //character.zPosition = 1
        // character.position = CGPoint(x: frame.midX, y: frame.size.height - 20)
         //addChild(character)
@@ -68,6 +85,10 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
                                               SKAction.removeFromParent()]))
         }
  */
+    }
+    func froggoEat() {
+        character.run(SKAction.repeat(SKAction.animate(with: gifTextures, timePerFrame: 0.125), count: 8))
+        
     }
     /*
     func getPhotoFromSource(source: UIImagePickerController.SourceType) {
@@ -90,22 +111,53 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         button.zPosition = 1
         self.addChild(button)
     }
+    func updateHealthHappiness(health: Int, happiness: Int) {
+        let newHealth = UserDefaults().integer(forKey: "HEALTH") + health
+        let newHappiness = UserDefaults().integer(forKey: "HAPPINESS") + happiness
+        UserDefaults.standard.set(newHealth, forKey: "HEALTH")
+        UserDefaults.standard.set(newHappiness, forKey: "HAPPINESS")
+        healthLabel.text = "HEALTH " + String(UserDefaults.standard.integer(forKey: "HEALTH"))
+        happinessLabel.text = "HAPPINESS " + String(UserDefaults.standard.integer(forKey: "HAPPINESS"))
+
+        
+    }
     func throwFood(foodName: String) {
         print(foodName)
         if(foodName == "Hamburger") {
-            food = "Hamburger.jpg"
+            food = "Hamburger1"
+            updateHealthHappiness(health: 5, happiness: 10)
         }else if(foodName == "Hot Dog") {
-            food = "HotDog.jpg"
+            food = "Hot Dog1"
+            updateHealthHappiness(health: -5, happiness: 4)
         }else if(foodName == "French Fries") {
-            food = "FrenchFries.jpg"
+            food = "French Fries1"
+            updateHealthHappiness(health: -13, happiness: 17)
         }else if(foodName == "Pizza") {
-            food = "Pizza.jpg"
+            food = "Pizza1"
+            updateHealthHappiness(health: -14, happiness: 25)
         }else if(foodName == "Rice") {
-            food = "Rice.jpg"
+            food = "Rice1"
+            updateHealthHappiness(health: -1, happiness: 1)
         }else if(foodName == "Noodles") {
-            food = "Noodles.jpg"
+            food = "Noodles1"
+            updateHealthHappiness(health: 0, happiness: 15)
+        }else if(foodName == "Orange") {
+            food = "Oranges1.jpg"
+            updateHealthHappiness(health: 15, happiness: -5)
+        }else if(foodName == "Apple") {
+            food = "Apple1"
+            updateHealthHappiness(health: 15, happiness: -5)
+        }else if(foodName == "Banana") {
+            food = "Banana1"
+            updateHealthHappiness(health: 15, happiness: -5)
+        }else if(foodName == "Steak") {
+            food = "Steak1"
+            updateHealthHappiness(health: 10, happiness: 10)
+        }else if(foodName == "Roach") {
+            food = "Roach1"
+            updateHealthHappiness(health: 100, happiness: 100)
         }else{
-            //prompt input
+            //prompt input add in future
         }
         let foodTemp = SKSpriteNode(imageNamed: food)
         foodTemp.zPosition = 4
@@ -113,8 +165,10 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         foodTemp.size = CGSize(width: 250, height: 250)
         self.addChild(foodTemp)
         foodTemp.run(SKAction.resize(toWidth: 0, height: 0, duration: 2))
-        
+        froggoEat()
     }
+
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
       /*
         let touch = touches.first

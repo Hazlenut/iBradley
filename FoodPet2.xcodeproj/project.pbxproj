@@ -20,6 +20,8 @@
 		205AED2D2622246E00344624 /* GameScene_CameraRoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205AED2C2622246E00344624 /* GameScene_CameraRoll.swift */; };
 		205AED31262234F600344624 /* FoodImageClassifier1 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 205AED30262234F600344624 /* FoodImageClassifier1 1.mlmodel */; };
 		2096F95C2622CE5C00947FBF /* IOSDevCenters+GIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2096F95B2622CE5C00947FBF /* IOSDevCenters+GIF.swift */; };
+		2096F969262370E500947FBF /* FoodImageClassifierN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2096F968262370E500947FBF /* FoodImageClassifierN.mlmodel */; };
+		2096F96E2623817000947FBF /* FoodImageClassiferF.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2096F96D2623817000947FBF /* FoodImageClassiferF.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		205AED2C2622246E00344624 /* GameScene_CameraRoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene_CameraRoll.swift; sourceTree = "<group>"; };
 		205AED30262234F600344624 /* FoodImageClassifier1 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "FoodImageClassifier1 1.mlmodel"; sourceTree = "<group>"; };
 		2096F95B2622CE5C00947FBF /* IOSDevCenters+GIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IOSDevCenters+GIF.swift"; sourceTree = "<group>"; };
+		2096F968262370E500947FBF /* FoodImageClassifierN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FoodImageClassifierN.mlmodel; sourceTree = "<group>"; };
+		2096F96D2623817000947FBF /* FoodImageClassiferF.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FoodImageClassiferF.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +119,10 @@
 				205AECFA26220DCA00344624 /* GameScene.swift */,
 				205AED2C2622246E00344624 /* GameScene_CameraRoll.swift */,
 				205AECFC26220DCA00344624 /* GameViewController.swift */,
+				2096F96D2623817000947FBF /* FoodImageClassiferF.mlmodel */,
 				205AECFE26220DCA00344624 /* Main.storyboard */,
 				205AED30262234F600344624 /* FoodImageClassifier1 1.mlmodel */,
+				2096F968262370E500947FBF /* FoodImageClassifierN.mlmodel */,
 				205AED0126220DCC00344624 /* Assets.xcassets */,
 				205AED0326220DCC00344624 /* LaunchScreen.storyboard */,
 				205AED0626220DCC00344624 /* Info.plist */,
@@ -276,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2096F96E2623817000947FBF /* FoodImageClassiferF.mlmodel in Sources */,
 				205AECFB26220DCA00344624 /* GameScene.swift in Sources */,
+				2096F969262370E500947FBF /* FoodImageClassifierN.mlmodel in Sources */,
 				205AECFD26220DCA00344624 /* GameViewController.swift in Sources */,
 				205AED2D2622246E00344624 /* GameScene_CameraRoll.swift in Sources */,
 				205AECF526220DCA00344624 /* AppDelegate.swift in Sources */,
