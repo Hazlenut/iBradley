@@ -141,8 +141,8 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         }else if(foodName == "Noodles") {
             food = "Noodles1"
             updateHealthHappiness(health: 0, happiness: 15)
-        }else if(foodName == "Orange") {
-            food = "Oranges1.jpg"
+        }else if(foodName == "Oranges") {
+            food = "Orange1.jpg"
             updateHealthHappiness(health: 15, happiness: -5)
         }else if(foodName == "Apple") {
             food = "Apple1"
