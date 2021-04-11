@@ -16,7 +16,9 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
     private var background = SKSpriteNode(imageNamed: "possiblebackground")
     private var button: SKNode! = nil
     var maskingCameraRolleChoice:Bool = false
-    //var maskOffset:CGPoint = CGPointZero
+    
+    var gifTextures: [SKTexture] = []
+    
     
     override func didMove(to view: SKView) {
         //background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
@@ -32,6 +34,9 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         */
         addChild(background)
         createButton()
+        for i in 1...5 {
+            gifTextures.append(SKTexture(imageNamed: "colorcharacter1.gif\(i)"))
+        }
         // Create shape node to use during mouse interaction
         /*
         let w = (self.size.width + self.size.height) * 0.05
@@ -47,7 +52,7 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
         }
  */
     }
-    
+    /*
     func getPhotoFromSource(source: UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(source) {
             let image = UIImagePickerController()
@@ -61,12 +66,16 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
             
         }
     }
-    
+    */
     func createButton() {
         button = SKSpriteNode(color: .yellow, size: CGSize(width: 100, height: 50))
         button.position = CGPoint(x: self.frame.midX , y: self.frame.midY)
         button.zPosition = 1
         self.addChild(button)
+    }
+    func throwFood(foodName: String) {
+        print(foodName)
+        print("HEREherehehrehere")
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
       /*
@@ -112,7 +121,7 @@ class GameScene: SKScene, UIImagePickerControllerDelegate & UINavigationControll
             let touch = touches.first
             let touchLocation = touch!.location(in: self)
             if button.contains(touchLocation) {
-                getPhoto()
+                getPhoto(source: UIImagePickerController.SourceType.camera)
             }
         }
     }
